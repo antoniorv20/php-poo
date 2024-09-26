@@ -1,53 +1,48 @@
-<?php
+<?php 
+declare(strict_types=1);
 
-declare(strict_types= 1);   
-
-require_once 'modelos/perro.php';
-require_once 'modelos/gato.php';
-require_once 'figuras/cuadrado.php';
-require_once 'figuras/circulo.php';
-require_once 'modelos/plan.php';
+require_once 'modelos/autoload.php';
 
 
-
-$miPerro = new Perro('Mini', 12, 'yorsite');
+$miPerro = new Perro('Tula', 14, 'Cunera');
 
 echo '<pre>';
 var_dump($miPerro);
 echo '</pre>';
-echo '<br>';
 
-$miPerro2 = new Perro('Toby', 12, 'Malinois');
-echo '<br>';
-echo $miPerro2 -> tostring() .'<br>';
-echo $miPerro2 -> hacerRuido() . '<br>';
+echo $miPerro->toString();
+echo $miPerro->hacerSonido();
 
-$miGato = new Gato('Toby', 12, false);
-echo '<br>';
-echo $miGato -> tostring() .'<br>';
-echo $miGato -> hacerRuido() . '<br>';
+$miGato = new Gato('Gus', 3, true);
+$miGata = new Gato('Lía', 2, false);
 
-echo '<br>';
-$circulo = new Circulo(5);
-$cuadrado = new Cuadrado(5);
+echo $miGato->toString();
+echo $miGata->toString();
 
-echo $circulo -> mostrarArea() .'<br>';
-echo $cuadrado -> mostrarArea() .'<br>';
-echo '<br>';   
 
-$planSubcripcion = new Plan(Plan::PLAN_BASICO);
-echo $planSubcripcion -> obtenerPrecio() .'<br>';
+$miCuadrado = new Cuadrado(6);
 
-$planSubcripcion = new Plan(Plan::PLAN_ESTANDAR);
-echo $planSubcripcion -> obtenerPrecio() .'<br>';
+echo $miCuadrado->mostrarArea();
 
-$planSubcripcion = new Plan(Plan::PLAN_PREMIUM);
-echo $planSubcripcion -> obtenerPrecio() .'<br>';
+$miCirculo = new Circulo(6);
+echo $miCirculo->mostrarArea();
 
 echo '<br>';
 
-$planesYPrecios = Plan::obtenerPlanesYPrecios();
+$planBasico = new Plan(Plan::PLAN_BASICO);
+echo $planBasico->obtenerPrecio();
 
-foreach ($planesYPrecios as $plan => $precio) {
+$planEstandard = new Plan(Plan::PLAN_ESTANDARD);
+echo $planEstandard->obtenerPrecio();
+
+$planPremium = new Plan(Plan::PLAN_PREMIUM);
+echo $planPremium->obtenerPrecio();
+
+$planes = Plan::obtenerTodosLosPlanes();
+echo '<br>';
+echo '<p>Los planes disponibles son:</p>';
+
+foreach($planes as $plan => $precio){
     echo "$plan: $precio <br>";
 }
+

@@ -1,6 +1,6 @@
 <?php
 
-declare(strict_types= 1);
+declare(strict_types=1);
 
 class Director{
     private int $id;
@@ -10,7 +10,8 @@ class Director{
     private DateTimeImmutable $creado;
     private string $biografia;
 
-    public function __construct(int $id, string $nombre, string $apellido, DateTime $f_nacimiento, DateTimeImmutable $creado, string $biografia){
+    public function __construct(int $id, string $nombre, string $apellido, DateTime $f_nacimiento, DateTimeImmutable $creado, string $biografia)
+    {
         $this->id = $id;
         $this->nombre = $nombre;
         $this->apellido = $apellido;
@@ -19,66 +20,51 @@ class Director{
         $this->biografia = $biografia;
     }
 
-    public function getId(): int{
+    public function getId(): int {
         return $this->id;
     }
-
-    public function getNom(): string{
+    
+    public function getNombre(): string {
         return $this->nombre;
     }
 
-    public function getApellido(): string{
+    public function getApellido() : string{
         return $this->apellido;
     }
-
-    public function getFNacimiento(): DateTime{
+    public function getF_nacimiento() : DateTime{
         return $this->f_nacimiento;
     }
-
-    public function getFNacimientoString(): string{
-        return $this->f_nacimiento->format("d-m-Y");
+    public function getStringFecha() : string{
+        return $this->f_nacimiento->format('d-m-Y');
     }
-
     public function getCreado(): DateTimeImmutable{
         return $this->creado;
     }
-
     public function getBiografia(): string{
         return $this->biografia;
-    }
-
-    public function setId(int $id): void{
-        $this->id = $id;
     }
 
     public function setNombre(string $nombre): void{
         $this->nombre = $nombre;
     }
-
-    public function setApellido(string $apellido): void{
+    public function setApellido(string $apellido) : void{
         $this->apellido = $apellido;
     }
-
-    public function setFNacimiento(DateTime $f_nacimiento): void{
+    public function setF_nacimiento(DateTime $f_nacimiento) : void{
         $this->f_nacimiento = $f_nacimiento;
     }
-
     public function setCreado(DateTimeImmutable $creado): void{
         $this->creado = $creado;
     }
-
     public function setBiografia(string $biografia): void{
         $this->biografia = $biografia;
     }
-
-    public function getNombreCompleto(): string{
-        return "Director: $this->nombre $this->apellido <br> ";
+    public function getNombreCompleto():string{
+        return "Director: $this->nombre $this->apellido <br>";
     }
-
-    public function tostring(): string{
-        return $this->getNombreCompleto().
-        'Fecha nacimiento: ' . $this->getFNacimientoString() . '<br>' .
-        'Biografia: ' . $this -> biografia . '<br>';
+    public function toString():string{
+        return $this->getNombreCompleto() 
+        . 'Fecha de nacimiento: '. $this->getStringFecha() . ' <br>'
+        . "Biografía: $this->biografia <br>";
     }
-
 }

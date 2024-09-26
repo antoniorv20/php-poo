@@ -1,25 +1,37 @@
 <?php
 declare(strict_types= 1);
-include 'modelos/pelicula.php';
-include 'modelos/director.php';
+include __DIR__ .'/modelos/pelicula.php';
+include __DIR__ .'/modelos/director.php';
+include 'modelos/persona.php';
+include 'modelos/coche.php';
 
-
-$fechaNacimiento = new DateTime('22-05-2002');
-$fechaCreacion = new DateTimeImmutable();
-$d1 = new director(2,'Juan','perez',$fechaNacimiento, $fechaCreacion, 'gne igi');
-
-
-$pelicula1 = new Pelicula(2,'el señor de los anillos',23,$d1);
-
-
-echo $pelicula1 -> __tostring().'<br>';
-
-
-
-
+//__DIR__ ruta absoluta del directorio dónde se encuentra el archivo actual
+echo __DIR__;
 echo '<br>';
-echo $d1 -> tostring().'<br>';
-echo $d1 -> getCreado() ->format('d-m-Y') .'<br>';
+//__FILE__ ruta absoluta del archivo actual
+echo __FILE__;
 echo '<br>';
 
-echo $pelicula1 -> getDirector() -> tostring().'<br>';
+$fecha = new DateTime('20-12-1950');
+$creado = new DateTimeImmutable();
+
+$director1 = new Director(1,  "Martin", "Scorsesse", $fecha, $creado, 'Muchas películas, de pequeño quería ser panadero');
+
+//crear un objeto o instancia de la clase Pelicula
+$pelicula1 = new Pelicula(1, 'Papillon', 33, $director1);
+
+echo $pelicula1->toString();
+
+echo $pelicula1->getDirector()->toString();
+echo $pelicula1->getDirector()->getNombreCompleto();
+
+$pelicula2 = new Pelicula(1, 'Gozzilla', 22);
+echo  $pelicula2->toString();
+
+$persona = new Persona('Manolo', 33);
+
+echo $persona->saludar();
+
+$miCoche = new Coche('Ferrari', 'SF1', 'Rojo', 2023);
+echo $miCoche->obtenerInformacion();
+

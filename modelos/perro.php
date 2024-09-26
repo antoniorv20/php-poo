@@ -2,8 +2,7 @@
 declare(strict_types=1);
 require_once 'animal.php';
 
-class Perro extends Animal
-{
+class Perro extends Animal{
     private string $raza;
 
     public function __construct(string $nombre, int $edad, string $raza)
@@ -12,12 +11,12 @@ class Perro extends Animal
         $this->raza = $raza;
     }
 
-    public function tostring(): string
-    {
-        return parent::tostring() . " , Raza: {$this->raza}";
+    public function toString():string{
+        return parent::toString() . " , Raza: {$this->raza}<br>";
     }
 
-    public function hacerRuido(): string{
-        return "Guau, guau";
+    public function hacerSonido(): string
+    {
+        return "Guau guau...<br>";
     }
 }
