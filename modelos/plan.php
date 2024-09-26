@@ -40,5 +40,14 @@ class Plan
         }
     }
 
+     // Método estático para obtener todos los planes y precios
+     public static function obtenerPlanesYPrecios(): array
+     {
+         return [
+             self::PLAN_BASICO => self::PRECIO_BASICO,
+             self::PLAN_ESTANDAR => self::PRECIO_ESTANDAR,
+             self::PLAN_PREMIUM => self::PRECIO_PREMIUM
+         ];
 
+}
 }

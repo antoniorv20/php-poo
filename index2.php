@@ -44,5 +44,10 @@ echo $planSubcripcion -> obtenerPrecio() .'<br>';
 $planSubcripcion = new Plan(Plan::PLAN_PREMIUM);
 echo $planSubcripcion -> obtenerPrecio() .'<br>';
 
-$planSubcripcion = new Plan(Plan::PLAN_TACION);
-echo $planSubcripcion -> obtenerPrecio() .'<br>';
+echo '<br>';
+
+$planesYPrecios = Plan::obtenerPlanesYPrecios();
+
+foreach ($planesYPrecios as $plan => $precio) {
+    echo "$plan: $precio <br>";
+}
